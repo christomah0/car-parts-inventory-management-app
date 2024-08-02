@@ -25,10 +25,10 @@ export default function Index() {
         return null;
     }
 
-    const route = (!isAuth) ? (
+    const route = (isAuth) ? (
         '/(authentication)'
     ) : (
-        '/(main)'
+        '/(main)/[part]'
     );
 
     return (
