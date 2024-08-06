@@ -17,8 +17,7 @@ configureObservablePersistence({
 // Create an observable object
 export const user$ = observable({
   details: {
-    username: 'admin',
-    password: 'admin',
+    username: '',
     isAuth: false
   }
 });
@@ -37,5 +36,6 @@ export const updateUserDetails = (details: userDetailsType) => {
 };
 
 export type userDetailsType = {
+  username?: string;
   isAuth?: boolean;
 };

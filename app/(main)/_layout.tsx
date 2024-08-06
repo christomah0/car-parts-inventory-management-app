@@ -1,13 +1,11 @@
 import { Colors, Sizes } from "@/constants/DefaultColors";
 import { Stack, router } from "expo-router";
-import { useNavigation } from '@react-navigation/native';
 import tw from "twrnc";
 import CustomizedStackHeader from "@/components/CustomizedStackHeader";
 import { SafeAreaView } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
-export default function ForumLayout() {
-  const navigation = useNavigation();
+export default function MainLayout() {
   const insets = useSafeAreaInsets();
 
   return (

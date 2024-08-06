@@ -1,5 +1,5 @@
 import React from "react";
-import { TouchableOpacity, AnimatableNumericValue, StyleProp } from "react-native";
+import { TouchableOpacity, AnimatableNumericValue, StyleProp, DimensionValue } from "react-native";
 import { Colors } from "@/constants/DefaultColors";
 import { Image, ImageStyle } from 'expo-image';
 
@@ -24,7 +24,7 @@ export default function CustomizedButton(props: ButtonProps) {
         borderColor: (props.border) ? Colors.main.BASE_1 : "transparent", // Border color
         borderRadius: (props.borderRadius) ? props.borderRadius : 0, // Border radius
         opacity: props.opacity, // Opacity for animation
-        paddingVertical: 10, // Vertical padding
+        paddingVertical: (props.paddingVertical) ? props.paddingVertical : 10, // Vertical padding
       }]}
     >
       {props.children}
@@ -49,4 +49,5 @@ interface ButtonProps {
   opacity?: AnimatableNumericValue | undefined; // Optional opacity for animation
   disable?: boolean | undefined; // Prop to disable button interaction
   onPress?: () => void; // Function to be called on button press
+  paddingVertical?: DimensionValue;
 }

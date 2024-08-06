@@ -17,8 +17,8 @@ export default function CustomizedStackHeader(props: CustomizedStackHeaderCompon
         </TouchableOpacity>
         <Text
           style={{
-            fontSize: 20,
-            fontWeight: 'bold',
+            fontSize: 24,
+            fontWeight: 'normal',
             color: props.titleColor ?? '#fff'
           }}
         >
