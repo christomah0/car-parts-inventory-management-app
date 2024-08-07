@@ -1,7 +1,8 @@
 import CustomizedButton from "@/components/CustomizedButton";
 import CustomizedModal from "@/components/CustomizedModal";
 import { Colors } from "@/constants/DefaultColors";
-import { getUserDetails } from "@/services/sqliteOperations";
+import { TRUE } from "@/constants/Values";
+import { getUserDetails, putIsAuth } from "@/services/sqliteOperations";
 import { digestData } from "@/utils/crypto";
 import { updateUserDetails } from "@/utils/legendappState";
 import { log } from "@/utils/toolBox";
@@ -33,9 +34,12 @@ export default function SignInScreen() {
             // Evaluates data matching
             if (signInInfo.username == result?.username && hashedPassword == result.password) {
                 updateUserDetails({
-                    username: signInInfo.username,
-                    isAuth: true
+                    username: result.username,
+                    isAuth: TRUE
                 });
+
+                // Update auth state
+                await putIsAuth(result.username, TRUE);
 
                 // Deactivate loading state
                 setIsLoading(false);

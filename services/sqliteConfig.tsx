@@ -33,11 +33,12 @@ export const dropSQLiteTable = async () => {
 export const initSQLiteDB = async () => {
   await db.execAsync(`
         PRAGMA journal_mode = 'wal';
+        PRAGMA foreign_keys = 'ON';
         CREATE TABLE IF NOT EXISTS users (
           id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, 
           username TEXT NOT NULL, 
           password TEXT NOT NULL, 
-          isAuth BOOL NOT NULL
+          isAuth INTEGER NOT NULL CHECK (isAuth IN (0, 1))
         );
         CREATE TABLE IF NOT EXISTS cars (
           idCar INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, 
@@ -50,8 +51,8 @@ export const initSQLiteDB = async () => {
           registrationNumber TEXT NOT NULL, 
           name TEXT NOT NULL, 
           partCount INTEGER NOT NULL, 
-          createdAt DATE NOT NULL, 
-          updatedAt DATE, 
+          createdAt TEXT, 
+          updatedAt TEXT, 
           idPartCar INTEGER NOT NULL, 
           FOREIGN KEY(idPartCar) REFERENCES parts(idCar)
         );
